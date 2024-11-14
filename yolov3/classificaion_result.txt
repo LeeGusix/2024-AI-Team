@@ -1,0 +1,1 @@
+data\samples\9.jpg,00000000,N
