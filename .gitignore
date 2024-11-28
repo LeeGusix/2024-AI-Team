@@ -70,3 +70,16 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+
+# 가상환경
+/yolov5/test_env_v5
+# 데이터셋
+/yolov5/dataset/
+/datasets/
+# comet
+/yolov5/.cometml-runs/*.zip
+yolov5/models.zip
+yolov5/utils/
+yolov5/models/
+yolov5/utils.zip
