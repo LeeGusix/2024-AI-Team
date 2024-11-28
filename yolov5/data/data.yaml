@@ -1,5 +1,5 @@
-train: ./dataset/images/train  # 학습 이미지 경로
-val: ./dataset/images/val      # 검증 이미지 경로
+train: ../dataset/images/train  # 학습 이미지 경로
+val: ../dataset/images/val      # 검증 이미지 경로
 
 nc: 403                        # 클래스 수 (한국 음식 종류)
 names: 
