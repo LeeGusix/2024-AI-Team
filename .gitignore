@@ -79,7 +79,7 @@ crashlytics-build.properties
 /datasets/
 # comet
 /yolov5/.cometml-runs/*.zip
-yolov5/models.zip
+#yolov5/models.zip
 yolov5/utils/
 yolov5/models/
-yolov5/utils.zip
+#yolov5/utils.zip
