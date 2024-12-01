@@ -67,7 +67,9 @@ python train.py --img 1280 --batch 8 --epochs 100 --data data/data.yaml --cfg mo
 python train.py --data data/data.yaml --cfg models/yolov5s.yaml --weights '' --img 640 --batch 16 --epochs 100 --device 0
 
 small
-python train.py --data data/data.yaml --cfg models/yolov5m.yaml --weights yolov5s.pt --img 640 --batch 16 --epochs 100 --device 0
+python train.py --data data/data.yaml --cfg models/yolov5s.yaml --weights yolov5s.pt --img 640 --batch 16 --epochs 100 --device 0
+python train.py --data data/data.yaml --cfg models/yolov5s.yaml --weights yolov5s.pt --img 640 --batch 16 --epochs 100 --device 0
+
 
 medium
 python train.py --data data/data.yaml --cfg models/yolov5m.yaml --weights yolov5m.pt --img 640 --batch 16 --epochs 100 --device 0
