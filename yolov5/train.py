@@ -303,6 +303,9 @@ def train(hyp, opt, device, callbacks):
     labels = np.concatenate(dataset.labels, 0)
     mlc = int(labels[:, 0].max())  # max label class
     assert mlc < nc, f"Label class {mlc} exceeds nc={nc} in {data}. Possible class labels are 0-{nc - 1}"
+    print(f"Loaded nc={nc} from data.yaml")
+    print(f"Maximum label class in dataset: {mlc}")
+
 
     # Process 0
     if RANK in {-1, 0}:
@@ -338,7 +341,18 @@ def train(hyp, opt, device, callbacks):
     hyp["cls"] *= nc / 80 * 3 / nl  # scale to classes and layers
     hyp["obj"] *= (imgsz / 640) ** 2 * 3 / nl  # scale to image size and layers
     hyp["label_smoothing"] = opt.label_smoothing
-    model.nc = nc  # attach number of classes to model
+
+    # train.py에서 model.yaml의 nc 덮어쓰기 방지
+    # 기존 코드
+    #model.nc = data['nc']  # 이 부분이 의심됩니다.
+
+    # 수정된 코드
+    model.nc = data['nc']  # 이 부분이 제대로 실행되도록 확인
+    if model.nc != data['nc']:
+        print(f"Warning: Overriding model.nc {model.nc} with data.nc {data['nc']}")
+        model.nc = 401
+
+    
     model.hyp = hyp  # attach hyperparameters to model
     model.class_weights = labels_to_class_weights(dataset.labels, nc).to(device) * nc  # attach class weights
     model.names = names

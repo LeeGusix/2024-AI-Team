@@ -63,6 +63,7 @@ VS Code에서 train.py를 열고 상단의 Run and Debug 버튼을 클릭합니�
 
 python train.py --img 1280 --batch 8 --epochs 100 --data data/data.yaml --cfg models/yolov5m.yaml --weights test1.pt
 
+python train.py --data data/data.yaml --cfg models/yolov5s.yaml --img 640 --batch 16 --epochs 100 --device 0
 
 python train.py --data data/data.yaml --cfg models/yolov5s.yaml --weights '' --img 640 --batch 16 --epochs 100 --device 0
 
