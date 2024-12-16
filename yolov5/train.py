@@ -201,6 +201,9 @@ def train(hyp, opt, device, callbacks):
     init_seeds(opt.seed + 1 + RANK, deterministic=True)
     with torch_distributed_zero_first(LOCAL_RANK):
         data_dict = data_dict or check_dataset(data)  # check if None
+        
+    print(f"DEBUG: data_dict = {data_dict}, type = {type(data_dict)}")
+
     train_path, val_path = data_dict["train"], data_dict["val"]
     nc = 1 if single_cls else int(data_dict["nc"])  # number of classes
     names = {0: "item"} if single_cls and len(data_dict["names"]) != 1 else data_dict["names"]  # class names
@@ -347,10 +350,11 @@ def train(hyp, opt, device, callbacks):
     #model.nc = data['nc']  # 이 부분이 의심됩니다.
 
     # 수정된 코드
-    model.nc = data['nc']  # 이 부분이 제대로 실행되도록 확인
-    if model.nc != data['nc']:
-        print(f"Warning: Overriding model.nc {model.nc} with data.nc {data['nc']}")
-        model.nc = 401
+    model.nc = 401  # 이 부분이 제대로 실행되도록 확인
+    #model.nc = data['nc']  # 이 부분이 제대로 실행되도록 확인
+    # if model.nc != data['nc']:
+    #     print(f"Warning: Overriding model.nc {model.nc} with data.nc {data['nc']}")
+    #     model.nc = 401
 
     
     model.hyp = hyp  # attach hyperparameters to model
