@@ -352,7 +352,7 @@ def train(hyp, opt, device, callbacks):
     # 수정된 코드
     model.nc = 401  # 이 부분이 제대로 실행되도록 확인
     #model.nc = data['nc']  # 이 부분이 제대로 실행되도록 확인
-    # if model.nc != data['nc']:
+    # if model.nc != int(data["nc"]):
     #     print(f"Warning: Overriding model.nc {model.nc} with data.nc {data['nc']}")
     #     model.nc = 401
 
